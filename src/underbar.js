@@ -107,6 +107,16 @@ var _ = {};
 
   // Produce a duplicate-free version of the array.
   _.uniq = function(array) {
+    var result = [];
+    var seen = [];
+
+    _.each(array, function(element){
+      if(_.indexOf(seen, element) < 0){
+        seen.push(element);
+        result.push(element);
+      }
+    })
+    return result;
   };
 
 
