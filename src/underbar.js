@@ -154,7 +154,11 @@ var _ = {};
   // Note: you will nead to learn a bit about .apply to complete this.
   _.invoke = function(collection, functionOrKey, args) {
     return _.map(collection, function(element){
-      return functionOrKey.apply(element, args);
+      if (typeof functionOrKey == 'function'){
+        return functionOrKey.apply(element, args);
+      }else{
+        return element[functionOrKey].apply(element, args);
+      }
     })
   };
 
